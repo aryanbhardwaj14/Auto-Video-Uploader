@@ -1,5 +1,9 @@
 import os, logging
 logging.basicConfig(level=logging.INFO)
+logging.info("ENV KEYS present: %s",
+             {k: bool(os.environ.get(k)) for k in ("PAGE_ID","PAGE_ACCESS_TOKEN","DROPBOX_ACCESS_TOKEN")})
+import os, logging
+logging.basicConfig(level=logging.INFO)
 
 PAGE_ID = os.getenv("PAGE_ID")
 PAGE_TOKEN = os.getenv("PAGE_ACCESS_TOKEN")
@@ -125,4 +129,5 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
