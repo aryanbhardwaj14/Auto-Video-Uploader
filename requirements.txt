@@ -1,0 +1,4 @@
+requests
+dropbox
+python-dotenv
+schedule
