@@ -1,5 +1,32 @@
 import os
 import time
+import logging
+import requests
+import dropbox
+from random import sample
+
+# logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+
+# env (use consistent names)
+PAGE_ID = os.getenv("PAGE_ID")
+PAGE_TOKEN = os.getenv("PAGE_ACCESS_TOKEN")
+# IMPORTANT: use DROPBOX_ACCESS_TOKEN (the name you already added in Railway)
+DROPBOX_ACCESS_TOKEN = os.getenv("DROPBOX_ACCESS_TOKEN")
+VIDEO_DIR = os.getenv("VIDEO_DIR", "/AutoVideos")
+UPLOADED_DIR = os.getenv("UPLOADED_DIR", "/uploaded")
+UPLOAD_INTERVAL_HOURS = int(os.getenv("UPLOAD_INTERVAL_HOURS", "3"))
+VIDEOS_PER_DAY = int(os.getenv("VIDEOS_PER_DAY", "8"))
+
+# small safety check before creating client
+if not (PAGE_ID and PAGE_TOKEN and DROPBOX_ACCESS_TOKEN):
+    logging.error("Missing required environment variables. Please set PAGE_ID, PAGE_ACCESS_TOKEN and DROPBOX_ACCESS_TOKEN in Railway variables.")
+    raise SystemExit(1)
+
+# only create the Dropbox client after checking env
+dbx = dropbox.Dropbox(DROPBOX_ACCESS_TOKEN)
+import os
+import time
 import random
 import dropbox
 import requests
@@ -83,4 +110,5 @@ def main():
         time.sleep(UPLOAD_INTERVAL_HOURS * 3600)
 
 if __name__ == "__main__":
+
     main()
