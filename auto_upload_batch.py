@@ -28,8 +28,8 @@ UPLOAD_INTERVAL_HOURS = int(os.getenv("UPLOAD_INTERVAL_HOURS", 3))
 # 200 Viral Hashtags (simple repeat)
 HASHTAGS = [
     "#viral", "#reels", "#reelsindia", "#trending", "#foryou", "#fyp",
-    "#bhabhi", "#gymvideos", "#ulluseries", "#romancevideo", "#love",
-    "#statusvideo", "#tiktokindia", "#bollywood", "#funnyvideo",
+    "#bhabhi", "#gymvideos", "#WatchThis", "#romancevideo", "#love",
+    "#statusvideo", "#fbreels", "#bollywood", "#funnyvideo",
 ] * 20  # replicate to reach ~200 tags
 
 # --------------------------------------------------
@@ -156,3 +156,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
