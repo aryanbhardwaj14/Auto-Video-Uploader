@@ -1,3 +1,16 @@
+import os, logging
+logging.basicConfig(level=logging.INFO)
+
+PAGE_ID = os.getenv("PAGE_ID")
+PAGE_TOKEN = os.getenv("PAGE_ACCESS_TOKEN")
+DROPBOX_TOKEN = os.getenv("DROPBOX_ACCESS_TOKEN")
+
+logging.info("DEBUG PAGE_ID present: %s", bool(PAGE_ID))
+logging.info("DEBUG PAGE_ACCESS_TOKEN first 6: %s", (PAGE_TOKEN or "")[:6])
+logging.info("DEBUG DROPBOX_ACCESS_TOKEN first 6: %s", (DROPBOX_TOKEN or "")[:6])
+
+if not PAGE_ID or not PAGE_TOKEN or not DROPBOX_TOKEN:
+    raise SystemExit("Missing environment variables!")
 import os
 import time
 import logging
@@ -112,3 +125,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
